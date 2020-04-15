@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Image slider</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+</head> <style >
+    .slider{
+       width: 700px;
+       height: 400px;
+    }
+    .slider img{
+        width: inherit;
+        height: inherit;
+    }
+</style>
+<body>
+    <!--5. Have an image and two buttons, PREV and NEXT. Have 10 images in an array.
+         When you click on NEXT, the next picture should display and when you click on PREV, 
+         the previous image should display.
+    -->
+    <div class="slider">
+        <img id="sourceImage"  src="images/slider/image1.jpg" alt="">
+    </div>
+    <br>
+    <button id="previous" onclick="prevbtn()">Previous</button>
+    <button id="next" onclick="nextbtn()">Next</button>
+    
+    <script>
+        var imageArray = 
+             ["images/slider/image1.jpg",
+             "images/slider/image2.jpg",
+             "images/slider/image3.jpg",
+             "images/slider/image4.jpg",
+             "images/slider/image5.jpg",
+             "images/slider/image6.jpg",
+             "images/slider/image7.jpg",
+             "images/slider/image8.jpg",
+             "images/slider/image9.jpg",
+             "images/slider/image10.jpg"]
+        var imagElement = document.getElementById("sourceImage");
+        var imageArrayLen = imageArray.length;
+        var i=0;
+
+        function nextbtn(){
+            if(i < imageArrayLen-1){
+                i++;
+            }else{
+                i=0;
+            }
+            imagElement.src = imageArray[i];
+
+        }
+
+        function prevbtn(){
+            if(i > 0){
+                i--;
+            }else{
+                i=imageArrayLen-1;
+            }
+            imagElement.src = imageArray[i];
+        }
+    </script>
+</body>
+</html>
