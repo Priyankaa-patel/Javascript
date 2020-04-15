@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <meta charset='utf-8'>
+     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+     <title>HTML DOM</title>
+     <meta name='viewport' content='width=device-width, initial-scale=1'>
+     <style >
+         .showHide{
+            width: 300px;
+            height: 200px;
+         }
+         .showHide img{
+             width: inherit;
+             height: inherit;
+         }
+     </style>
+ </head>
+ <body>
+     <!--------1.On click of a button, alert the text in the paragraph-->
+     <p>1.On click of a button, alert the text in the paragraph</p>
+     <button onclick="myText()">Try it</button>
+     <p id="text"></p>
+     <script>
+         function myText(){
+             document.getElementById("text").innerHTML = "Hello world!"
+         }
+     </script>
+     <hr>
+
+     <!------2. change the backgroundColor and text color-->
+     <p>2.change the backgroundColor and text color</p>
+
+     <button onclick="changeColor()">Try it</button>
+     <p id="change">In this paragraph, we change text and background color on click.</p>
+     <script>
+        /*   //simple calling
+        function changeColor(){
+             document.getElementById("change").style.backgroundColor = "#00bbff";
+             document.getElementById("change").style.color = "red";
+         }*/
+
+            //  css code with string
+         function changeColor(){
+             let styles = "background-color: #00bbff; color:red";
+             document.getElementById("change").style = styles;
+
+         }
+
+         /*    //  css code with string in csstext method
+         function changeColor(){
+             document.getElementById("change").style.cssText = "background-color: #00bbff; color:red";
+
+         }*/
+
+         /*   //  css with setAttribute
+         function changeColor(){
+             document.getElementById("change").setAttribute("style","background-color: #00bbff; color:red;");
+         }*/
+     </script>
+    <hr>
+
+
+    <!---------3. effect on input type text-->
+    <p>3. effect on input type text</p>
+
+     
+         <input type="text" name="textbox1" id="textbox1" value="value 1 : Apple " >
+         <input type="text" name="textbox2" id="textbox2" value="value 2: Banana">
+          
+
+         <button onclick="valueChanger()" >change values</button>
+        
+         <script>
+             function valueChanger(){
+                 var textbox1 = document.getElementById("textbox1");
+                 document.getElementById("textbox2").value = textbox1.value;
+
+             }
+         </script>
+
+     
+
+     <!-----4. Hide/show/Replace image------>
+     
+     <p>4. Hide/show/Replace image</p>
+
+     <div class="showHide">
+        <img id="showHideImage" src="images/strawberry-pancake.jpg" alt="" >
+
+    </div><br>
+    <button onclick="hideImage()">Hide</button>
+    <button onclick="showImage()">Show</button>
+    <button onclick="replaceImage()">Replace</button>
+
+    <script>
+        function hideImage(){
+          document.getElementById("showHideImage").style.display = "none";
+           
+         
+        }
+        function showImage(){
+           document.getElementById("showHideImage").style.display = "block";
+         
+        }
+        function replaceImage(){
+           document.getElementById("showHideImage").src = "images/bear-pancake.jpg";
+         
+        }
+    </script>
+
+ </body>
+ </html>
