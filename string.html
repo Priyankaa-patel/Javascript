@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Javascript String Assignment</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   
+</head>
+<body>
+
+    <!-------4. Write a program to return the length of a string "Pneumonoultramicroscopicsilicovolcanoconiosis".
+---->
+    <p>4.Finding length of string:</p>
+
+    <button onclick="lenfun()">Try it</button>
+
+    <p id="len"></p>
+
+    <script>
+        function lenfun(){
+            var x = "Pneumonoultramicroscopicsilicovolcanoconiosis";
+            document.getElementById("len").innerHTML = x.length;
+
+        }
+    </script>
+
+<hr>
+
+
+
+    <!-------5. Write a program to convert the above string to Upper case--->
+    <p>5.Convert string to upper case:</p>
+
+    <button onclick="upperfun()">Try it</button>
+    
+    <p id="upper">Hello World!</p>
+    
+    <script>
+    function upperfun() {
+      var text = document.getElementById("upper").innerHTML;
+      document.getElementById("upper").innerHTML = text.toUpperCase();
+    }
+    </script>
+    <hr>
+
+     <!-------6. Write a program to convert the above string to Lower case
+---->
+     <p>6.Convert string to Lower case:</p>
+
+     <button onclick="lowerfun()">Try it</button>
+
+     <p id="lower">HELLO WORLD!</p>
+
+     <script>
+         function lowerfun(){
+             var txt = document.getElementById("lower").innerHTML;
+             document.getElementById("lower").innerHTML = txt.toLowerCase();
+         }
+     </script>
+     <hr>
+
+     <!-------7. Consider the string “I like this product; I hate this product; This product is worth buying; 
+        I don’t agree with the above user”. Now break this whole string into pieces wherever you see “;”. 
+        Now print the broken down pieces one after the other in console.---->
+     <p>7.string can be converted to an array with the split()</p>
+
+     <button onclick="splitings()">Try it</button>
+    
+     <p id="spliting">I like this product; I hate this product; This product is worth buying; I don’t agree with the above user</p>
+
+     <script>
+         function splitings(){
+             var str = document.getElementById("spliting").innerHTML ;
+             var array = str.split(";");
+             document.getElementById("spliting").innerHTML = array[0]+"<br>"+array[1]+"<br>"+array[2]+"<br>"+array[3];
+         }
+     </script>
+    <hr>
+
+     <!-------8. For the above question 1, return the number of time the letter "o" appears.
+------->
+     <p>8. return the number of time the letter "o" appears</p>
+
+     <button onclick="letterCount()">Try it</button>
+
+     <p id="letterdiv"></p>
+
+     <script>
+         function letterCount(){
+         var strr = "I like this product; I hate this product; This product is worth buying; I don’t agree with the above user";
+         //var patterns = /o+/g;
+         var result = strr.match(/o+/g); 
+         document.getElementById("letterdiv").innerHTML = result.length;
+        
+         }
+     </script>
+
+     <hr>
+
+    <!-------9. Write a program to replace a particular term in a sentence (you can come up with a sentence). 
+        Replace with the term "javascript".---->
+     <p>9.Replace perticular string</p>
+
+     <button onclick="replacefun()">Try it</button>
+
+     <p id="rep">I want to learn Phython.</p>
+
+     <script>
+         function replacefun(){
+            var str = document.getElementById("rep").innerHTML;
+            var text = str.replace(/phython/i,"javaScript");  //("Phython","javaScript");
+            document.getElementById("rep").innerHTML = text;
+         }
+     </script>
+     <hr>
+
+     <!-------10. Find the number of times the string "not" appears in this sentence -
+a. " Javascript notation %^&* notes that structure rules and not context for nothing"
+b. Now, for the above problem 4, create an array with texts before and after "not" occurrences.------->
+     <p>10. return the number of time the letter "not" appears</p>
+
+     <button onclick="wordCount()">Try it</button>
+
+     <p id="wordiv"></p>
+     <button onclick="addNot()">Add not</button>
+     <p id="add"></p>
+
+     <script>
+         function wordCount(){
+         var strr = "Javascript notation %^&* notes that structure rules and not context for nothing";
+         var patterns = /not+/g;
+         var result = strr.match(patterns); 
+         document.getElementById("wordiv").innerHTML = result.length;
+        
+         }
+
+         function addNot(){
+            /*var str1 = "Hello ";
+            var str2 = "world!";
+            var str3 = "Hello ";
+            var res = str1.concat(str2,str3);*/
+             var newstring = "Pneumonoultramicroscopicsilicovolcanoconiosis";
+             document.getElementById("add").innerHTML = "not " + newstring + " not";
+
+         }
+     </script>
+</body>
+</html>
