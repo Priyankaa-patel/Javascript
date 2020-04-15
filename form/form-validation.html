@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Form Validation</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <form name="formValidate" action="" method="" onsubmit="return formValidation()">
+                <div class="col-100">
+                    <div class="col-25">
+                        <label>First Name:</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="fname" id="fname" placeholder="First Name" autocomplete="off" required>
+                    </div>
+                </div>
+
+                <div class="col-100">
+                    <div class="col-25">
+                        <label>Last Name:</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="lname" id="lname" placeholder="Last Name" autocomplete="off" required>
+                    </div>    
+                </div>
+                
+                <div class="col-100">
+                    <div class="col-25">
+                        <label>Gender:</label>
+                    </div>
+                    <div class="col-75">
+                        <!--to give "required" on radio button, you must give both the field same name so you only select one-->
+                        <input type="radio" name="gender" id="male" value="Male" required>Male 
+                        <input type="radio" name="gender" id="female" value="Female" >Female
+                    </div>
+                </div>
+
+                <div class="col-100">
+                    <div class="col-25">
+                        <label>State</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="state"required>
+                            <option value="">None</option>
+                            <option value="Califronia">Califronia</option>
+                            <option value="Florida">Florida</option>
+                            <option value="Nevada">Nevada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-100">
+                    <div class="col-25">&nbsp;</div>
+                    <div class="col-75">
+                        <input type="checkbox" name="terms" id="terms" required>Accept terms & condtions
+                    </div>
+                </div>
+                <div class="col-100">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+
+          
+        </div>
+
+    </div>
+
+<!-----------Form validation Scripts ---------->
+<script>
+//function for alert message
+/*function formValidation(){
+    var firstName = document.forms["formValidate"] ["fname"].value;
+    var lastName = document.forms["formValidate"] ["lname"].value;
+    var patters = /^[a-zA-Z]*$/g;
+    
+    if(firstName == "" || !firstName.match(patters)){
+       alert("Please fill First name and no number allowed.");
+        return false;
+
+    }else if (lastName == "" || !lastName.match(patters)){
+        alert("Please fill Last name and no number allowed.");
+        return false;
+    }
+    return true;
+    
+}*/
+//function to change box color
+function formValidation(){
+    var firstName = document.forms["formValidate"] ["fname"];
+    var lastName = document.forms["formValidate"] ["lname"];
+    var patters = /^[a-zA-Z]*$/g;
+    
+    if(firstName.value == "" || !firstName.value.match(patters)){
+        firstName.style.backgroundColor = "red";
+        return false;
+
+    }
+    if (lastName.value == "" || !lastName.value.match(patters)){
+        lastName.style.backgroundColor = "red";
+        return false;
+    }
+    return true;
+    
+}
+</script>
+
+
+</body>
+</html>
