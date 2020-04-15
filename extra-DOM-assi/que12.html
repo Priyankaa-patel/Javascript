@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Quetion 12</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        *{box-sizing: border-box;}
+        #myForm{
+            width: 40%;
+            padding: 1%;
+            background: #eee;
+        }
+        select, input{
+         
+            padding: 10px;
+            margin: 20px;
+            min-width: 50%;
+        }
+        #radioSelect, #radioSelect2, #check, #unchecked{
+            display: none;
+        }
+       #field1{
+           display: inline-block;
+       }
+    </style>
+</head>
+<body>
+<!--12. Create a form, 3text fields, 2 radio buttons, 1 checkbox and 1 drop down. This is at the hit of each key.
+    a. If you entering a number in the first text field, it should say ‘number’.
+    b. If you entering a character in the first text field, it should say ‘string’.
+    c. If you enter nothing, it should say ‘null’.
+    After the user enters the total word(for e.g: – a number or a character), then it should display as a ‘number’ or ‘string’. 
+    The moment you select a ‘radiobutton’, it should say ‘selected’.
+    The checkbox should show-
+    a. If the option is checked- display ‘checked’.
+    b. If the option is not checked- display ‘unchecked’.
+    When you hit on ‘submit’, it should alert ‘the form has been successfully submitted’.-->
+    <p>click event on some input types</p>
+    <form id="myForm" onsubmit="onSubmit()">
+        <input type="text" id="textField1" name="textField1" value="" onkeyup="textField()"><div id="field1"></div><div id="types"></div>
+        <input type="text" id="textField2" name="textField2" value="">
+        <input type="text" id="textField3" name="textField3" value="">
+
+        <input type="radio" id="radio" name="radio" onclick="radioSelect()"><div id="radioSelect">Selected</div>
+        <input type="radio" id="radio2" name="radio2"  onclick="radioSelect2()"><div id="radioSelect2">Selected</div>
+
+
+        <input type="checkbox" id="checkbox" name="checkbox" value="" onclick="check()"><div id="unchecked">Unchecked</div><div id ="check">Checked</div>
+
+        <select id="city" name="city">
+            <option value="">City</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="San Jose">San Jose</option>
+            <option value="Santa Clara">Santa Clara</option>
+            <option value="Santa Cruz">Santa Cruz</option>
+        </select>
+
+        <input type="submit" value="Submit" >
+
+    </form>
+    <script>
+        textField = function(){
+            let inputField = document.getElementById("textField1").value;
+            let numbers = /^[0-9]+$/;
+            let words = /^[a-zA-Z]+$/;
+            
+            if(inputField.match(numbers)){
+                document.getElementById("field1").innerHTML = typeof parseInt(inputField) ;
+            }
+            if(inputField.match(words)){
+                document.getElementById("field1").innerHTML = typeof inputField;
+            }
+            if(inputField == ""){
+                document.getElementById("field1").innerHTML = "Null";
+            }
+
+        }
+
+
+        radioSelect = function(){
+            let radioButton = document.getElementById("radio");
+            if(radioButton.checked === true){
+                document.getElementById("radioSelect").style.cssText = "display:inline-block;";
+            }
+        }
+
+        radioSelect2 = function(){
+            let radioButton = document.getElementById("radio2");
+            if(radioButton.checked === true){
+                document.getElementById("radioSelect2").style.cssText = "display:inline-block;";
+            }
+        }
+
+        check = function(){
+            let checkbox = document.getElementById("checkbox");
+            if(checkbox.checked === true){
+                document.getElementById("unchecked").style.cssText = "display:none;";
+            document.getElementById("check").style.cssText = "display:inline-block;";
+            }
+            else{
+                document.getElementById("unchecked").style.cssText = "display:inline-block;"; 
+                document.getElementById("check").style.cssText = "display:none;";  
+            }
+           
+        }
+
+        onSubmit = function(){
+            alert("The form has been successfully submitted");
+        }
+    </script>
+
+</body>
+</html>

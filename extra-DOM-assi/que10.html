@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Question 10</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+    <!--10. There should be ‘3text fields’,’2buttons’.
+a. If you press the first button, it should appear in the div.
+b.If you hit the second button, whatever you enter in the div,should come back to input field.
+-->
+    <p>10. If you press the first button, it should appear in the div.</p>
+    <form id="myForms">
+        <input type="text" name="fname" id="fname" placeholder="First Name">
+        <input type="text" name="mname" id="mname" placeholder="Middle Name">
+        <input type="text" name="lname" id="lname" placeholder="Last Name">
+
+        <input type="button" value="Save" onclick="save()">
+        <input type="button" value="Edit" onclick="edit()">
+        <!--<button value="Save" onclick="save()">Save</button>
+<button value="Edit" onclick="edit()">Edit</button>-->
+    </form>
+    <br><br>
+
+    <div id="textInfo"></div>
+    <br><br>
+    <script>
+        
+       
+       /* save = function () {
+            var firstName = document.getElementById("fname").value;
+        var middleName = document.getElementById("mname").value;
+        var lastName = document.getElementById("lname").value;
+            var divInfo = document.getElementById("textInfo");
+            divInfo.innerHTML = firstName + "<br>" + middleName + "<br>" + lastName;
+           return document.getElementById("myForms").reset(); //reset only work on placeholder not on default values
+        }*/
+
+
+
+        var myArray = [];
+            var form = document.getElementById("myForms");
+            var divInfo = document.getElementById("textInfo");
+        save = function(){
+           
+            for(i=0; i<form.length-2; i++){
+                myArray[i] = form.elements[i].value;
+                divInfo.innerHTML += myArray[i] +"<br>";
+                
+            }
+            
+            return document.getElementById("myForms").reset();
+        }
+
+        edit = function () {
+            for(i=0; i<form.length-2; i++){
+                 form.elements[i].value = myArray[i];
+                 
+            }
+         
+          
+            divInfo.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
