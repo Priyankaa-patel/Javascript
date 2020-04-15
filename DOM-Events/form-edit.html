@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Form Edit</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    
+</head>
+<!--10. Have two divs side by side - lets call them "Form Div" and "View Div".
+a. The first div - "Form Div" should have a simple form with fields - first name, last name, gender, state (select box) and "Save" button.
+b. The "View Div" should have a button called "EDIT" - but this button should be hidden by default.
+c. When you click on the "Save" button, the user entered data should appear in the "View Div" - also the form input fields should be cleared out (should be empty).
+d. The View Div should display form data in span tags or p tags or div tags but not as input tags. Also the "EDIT" button should now be visible.
+e. When you click on the "EDIT" button, the form should be repopulated with the data so that you can make some changes and save again.
+-->
+<body onload="hideButton()">
+    <div class="row">
+        <!------Blue color div for save form------>
+        <div class="div50 blue">
+            
+                    <form name="contactForm" id="myForm" action="" method="" onsubmit="return false">
+                        <div class="col-100">
+                            <div class="col-25">
+                                <label>First Name:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" name="fname" id="fname" placeholder="First Name" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="col-100">
+                            <div class="col-25">
+                                <label>Last Name:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" name="lname" id="lname" placeholder="Last Name" autocomplete="off" required>
+                            </div>    
+                        </div>
+                        
+                        <div class="col-100">
+                            <div class="col-25">
+                                <label>Gender:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="radio" name="gender"  value="Male" required>Male 
+                                <input type="radio" name="gender"  value="Female" required>Female
+                            </div>
+                        </div>
+        
+                        <div class="col-100">
+                            <div class="col-25">
+                                <label>State</label>
+                            </div>
+                            <div class="col-75">
+                                <select id="state"required>
+                                   <option value="">None</option>
+                                    <option value="Califronia">Califronia</option>
+                                    <option value="Florida">Florida</option>
+                                    <option value="Nevada">Nevada</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                       
+                        <div class="col-100">
+                            
+                           <button onclick="display()" class="buttonRed">Save</button>
+                        </div>
+                    </form> 
+                  
+                
+        </div>
+        <!-------Red color div to edit form-------->
+        <div class="div50 red">
+            <div class="col-100">
+                <div id="displayResult"></div>
+                <button onclick="editForm()" id="edit">Edit</button>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        // form validation function
+       /* function formValidation(){
+            let firstName = document.forms["formValidate"] ["fname"];
+            let lastName = document.forms["formValidate"] ["lname"];
+            let patters = /^[a-zA-Z]*$/g;
+            
+            if(firstName == "" || !firstName.match(patters)){
+            alert("Please fill First name and no number allowed.");
+            return false;
+
+            }else if (lastName == "" || !lastName.match(patters)){
+            alert("Please fill Last name and no number allowed.");
+            return false;
+            }
+            return true;
+        }*/
+
+        // on page load hide edit button function
+        hideButton = function(){
+            document.getElementById("edit").style.display = "none";
+        }
+
+        //display all form data to red div
+      /* let firstName, lastName, gender, select;
+        display = function(){
+             firstName = document.getElementById("fname").value;
+                 lastName = document.getElementById("lname").value;
+                 gender = document.contactForm.gender.value;
+                 select = document.getElementById("state").value;
+                document.getElementById("edit").style.display = "block";
+                 document.getElementById("displayResult").innerHTML = 
+                firstName +"<br>" + lastName + "<br>" +gender + "<br>" + select;
+              document.getElementById("myForm").reset();
+               
+            }
+            //take all date from red div adisplayResult
+            editForm = function() {
+                 document.getElementById("fname").value = firstName;
+                  document.getElementById("lname").value = lastName;
+                  document.contactForm.gender.value = gender;
+                  document.getElementById("state").value = select;
+                  document.getElementById("displayResult").style.display = "none";
+                  document.getElementById("edit").style.display = "none";
+            }*/
+
+            var myArray = [];
+            var form = document.getElementById("myForm");
+            var displayDiv = document.getElementById("displayResult");
+
+            display = function(){
+           
+           for(i=0; i<form.length-1; i++){
+               myArray[i] = form.elements[i].value;
+               displayDiv.innerHTML += myArray[i] +"<br>";
+            
+           }
+           document.getElementById("edit").style.display = "block";
+           return document.getElementById("myForm").reset();
+       }
+       
+        
+
+        editForm = function () {
+            for(i=0; i<form.length-1; i++){
+                 form.elements[i].value = myArray[i];
+                 
+            }
+            displayDiv.style.display = "none";
+            document.getElementById("edit").style.display = "none";
+        }
+        
+    </script>
+
+
+</body>
+</html>

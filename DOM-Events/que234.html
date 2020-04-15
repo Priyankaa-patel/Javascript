@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Onload Event</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            margin: 0;
+            padding: 2% 5%;
+            text-align: center;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #E91E63;
+            border: none;
+            color: #fff;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<!-------2. Have images, p tags, div tags and various other elements on the page. When the page loads, 
+    an alert saying "welcome to my blog" should pop up.
+--------->
+
+<body onload="welcome()">
+    <div>
+        <h1>Welcome to our website!</h1>
+        <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web
+            designs.
+            The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled
+            parts of
+            Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
+
+            “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua.”</p>
+        <img src="images/onload.jpg" width="50%" height="50%">
+        <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.)
+            that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless
+            filler text can be very useful when the focus is meant to be on design, not content.</p>
+
+
+        <!--3. Have several html tags on the page. Have an input button with id hideElems. When this button is clicked 
+            all the elements on the page should be hidden.
+4. Have an input button with id showElems. When this button is double clicked, a
+ll the elements on the page should be shown.
+-->
+        <button id="hideElems" onclick="hideEle()">Hide</button>
+        <button id="showElems" onclick="showEle()">Show</button>
+    </div>
+
+    <script>
+        //onload function
+        welcome = function () {
+            alert("welcome to my Blog");
+        }
+
+        //on click hide all elements of page
+        hideEle = function () {
+            let hide = document.querySelectorAll("h1, p, img");
+            let i;
+            for (i = 0; i < hide.length; i++) {
+                hide[i].style.display = "none";
+            }
+        }
+
+        //on click show all elements of page
+        showEle = function () {
+            let show = document.querySelectorAll("h1, p, img");
+            let i;
+            for (i = 0; i < show.length; i++) {
+                show[i].style.display = "inline-block";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

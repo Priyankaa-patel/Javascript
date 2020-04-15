@@ -1,0 +1,70 @@
+<!-- Have two buttons - "CHECK URL" and "ADD LINK". 
+    The button "ADD LINK" to your favorite websites.
+    Now on a click of "CHECK URL" button, check to see if "http://www.pro-tekconsulting.com" 
+    is included in these 5 anchors tags or not. If NO, then enable "ADD LINK" button. 
+    When you click on this "ADD LINK" button, Pro-Tek wesbite link should be added to the DOM. -->
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <input id="inputEl" type="text" aria-label="input" id="links" value="http://www.w3schools.com">
+    <button onclick="addLink()" id="linkbutton">Add Link</button>
+    <button onclick="checkUrl()">Check URL</button>
+    <br>
+    <h1>Favorite Sites</h1>
+    <div role="list" id="addlink">
+    </div>
+    <script>
+        let favs = [];
+        let inputElement = document.getElementById("inputEl");
+        let links = document.getElementById("addlink");
+        let AddLinkBtn = document.getElementById("linkbutton");
+        let protekLink = "http://www.pro-tekconsulting.com";
+
+
+        addLink = () => {
+            if (!favs.includes(inputElement.value)) {
+                if (favs.length !== 5) {
+                    favs.push(inputElement.value);
+
+                }
+
+                if (favs.length === 5) {
+                    favs.shift();
+                    favs.push(inputElement.value);
+                    AddLinkBtn.disabled = true;
+                }
+                links.innerHTML = "";
+                for (x in favs) {
+                    links.innerHTML += "<a href ='" + favs[x] + "'>" + favs[x] + " </a><br>"
+                }
+
+            }
+        }
+        checkUrl = () => {
+            if (favs.includes(protekLink)) {
+                if (favs.length === 5) {
+                    favs.shift();
+                }
+                AddLinkBtn.disabled = false;
+            } else {
+                if (favs.length === 5) {
+                    favs.shift();
+                }
+                AddLinkBtn.disabled = false;
+                favs.push(protekLink);
+            }
+
+            links.innerHTML = "";
+            for (x in favs) {
+                links.innerHTML += "<a href ='" + favs[x] + "'>" + favs[x] + " </a><br>"
+            }
+        }
+    </script>
+</body>
+
+</html>

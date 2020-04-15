@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>UL and checkbox</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body{
+            margin: 0;
+            padding: 2% 5%;
+
+        }
+        button{
+            padding: 10px 20px;
+            background: #E91E63;
+            border: none;
+            color: #fff;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        input[type=checkbox]{
+            margin:5px 5px 0 5px;
+        }
+        input[type=text]{
+            padding: 5px;
+        }
+       
+    </style>
+</head><!-----6. When page loads, write code to hide elements all the elements with ids "main_one", "main_two" and "main_three".-->
+<body onload="hideDivs()">
+        <div id="main_one">Until recently, the prevailing view assumed lorem ipsum was born as a nonsense text. 
+        “It's not Latin, though it looks like it, and it actually says nothing,” Before & After magazine answered
+         a curious reader, “Its ‘words’ loosely approximate the frequency with which letters occur in English, 
+         which is why at a glance it looks pretty real.”
+
+        As Cicero would put it, “Um, not so fast.”
+        </div>
+        
+        <div id="main_two">The placeholder text, beginning with the line “Lorem ipsum dolor sit amet, consectetur adipiscing elit”, 
+        looks like Latin because in its youth, centuries ago, it was Latin.
+        </div>
+        
+        <div id="main_three">Richard McClintock, a Latin scholar from Hampden-Sydney College, is credited with discovering the source 
+        behind the ubiquitous filler text. In seeing a sample of lorem ipsum, his interest was piqued by 
+        consectetur—a genuine, albeit rare, Latin word. Consulting a Latin dictionary led McClintock to a passage 
+        from De Finibus Bonorum et Malorum (“On the Extremes of Good and Evil”), a first-century B.C. 
+        text from the Roman philosopher Cicero.
+        </div>
+
+        <!----5. Have an input button with a id and
+a. when you mouseover this button, the <ul> elements on the page should be shown.
+b. when you mouseout this button, the <ul> elements on the page should be hidden.
+-->
+
+        <ul class="classUl">
+            <li>Cold Drinks</li>
+            <li>Hot Drinks</li>
+            <li>Ice-Creams</li>
+        </ul>
+
+        <button onmouseover="hideUl()" onmouseout="showUl()">Hide UL</button>
+
+        <!-------7. Create 10 check boxes. When you click a button called "Select All" - all the check boxes should be unchecked.
+ ------->
+        <div>
+            <h3>Slect your Desserts:</h3>
+            <input type="checkbox" name="check" id="" value="Apple Pie">Apple Pie
+            <br>
+            <input type="checkbox" name="check" id="" value="Fudge">Fudge
+            <br>
+            <input type="checkbox" name="check" id="" value="Cheese Cake">Cheese Cake
+            <br>
+            <input type="checkbox" name="check" id="" value="Funnel Cake">Funnel Cake
+            <br>
+            <input type="checkbox" name="check" id="" value="Banana Pudding">Banana Pudding
+            <br>
+            <input type="checkbox" name="check" id="" value="Tiramisu">Tiramisu
+            <br>
+            <input type="checkbox" name="check" id="" value="Dirt Cake">Dirt Cake
+            <br>
+            <input type="checkbox" name="check" id="" value="Hot Chocolate Brownie">Hot Chocolate Brownie
+            <br>
+            <input type="checkbox" name="check" id="" value="Sundae">Sundae
+            <br>
+            <input type="checkbox" name="check" id="" value="Cup Cake">Cup Cake
+            <br><br>
+            
+            <button onclick="selectAll()">Select all</button>
+            <button onclick="unselectAll()">Unselect all</button>
+        </div>
+        <br>
+        <br>
+        <!----------9. Have two buttons - "CHECK URL" and "ADD LINK". The button "ADD LINK" to your favorite websites. 
+            Now on a click of "CHECK URL" button, check to see if "http://www.pro-tekconsulting.com" is included in these 
+            5 anchors tags or not. If NO, then enable "ADD LINK" button. When you click on this "ADD LINK" button, 
+            Pro-Tek wesbite link should be added to the DOM.------->
+        <div><!--<input type="url">    this type have inbuild url validation-->
+            <input type="text" id="links" value="http://www.w3schools.com">
+            <button onclick="addLink()" id="linkbutton">Add Link</button><button onclick="checkUrl()">Check URL</button>
+
+            <div id="addlink">
+            </div>
+            
+        </div>
+
+        <script>
+            //on load hide some div's
+            hideDivs = function(){
+               let hide = document.querySelectorAll("#main_one, #main_two, #main_three");
+               let i;
+               for(i=0; i<hide.length; i++)
+               {
+                hide[i].style.display = "none";
+                }
+            }
+            //hide UL on mouseover
+            hideUl = function(){
+                let hide = document.querySelector(".classUl");
+                hide.style.visibility = "hidden";
+            }
+
+            showUl = function(){
+                let show = document.querySelector(".classUl");
+                show.style.visibility = "visible";
+            }
+            
+            //Checkbox select / unselect functions
+            selectAll = function(){
+                let checkboxes = document.getElementsByName("check");
+                let i;
+                for(i=0; i< checkboxes.length ; i++)
+                {
+                   if (checkboxes[i].type == "checkbox"){
+                       checkboxes[i].checked = true;
+                   }
+                }
+            }
+
+            unselectAll = function(){
+                let checkboxes = document.getElementsByName("check");
+                let i;
+                for(i=0; i< checkboxes.length ; i++)
+                {
+                   if (checkboxes[i].type == "checkbox"){
+                       checkboxes[i].checked = false;
+                   }
+                }
+            }
+        
+            // add link function
+            addLink = function(){
+                let links = document.getElementById("links");
+                //let patters = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  //patter form check email id
+                let patters = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+
+                if(!links.value.match(patters)){
+                    alert("please enter valid email address.");
+                    return false;
+                }
+
+                return document.getElementById("addlink").innerHTML += "<a>" + links.value +"</a><br>";
+            }
+
+            checkUrl = function(){
+                let button = document.getElementById("linkbutton");
+                let checklink = document.getElementById("addlink");
+              // let patt = /http:\/\/www.pro-tekconsulting.com/g;
+             //   if(checklink.match(patt))
+             if(!checklink.innerText.includes("http://www.pro-tekconsulting.com"))
+                {
+                    checklink.innerHTML += "<a>http://www.pro-tekconsulting.com</a><br>"; 
+                    
+                }else{
+                    
+                    button.disabled = true;
+                    button.style.opacity = 0.5;
+                    
+                    
+                }
+            }
+    
+        </script>
+    
+</body>
+</html>

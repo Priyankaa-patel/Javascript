@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>convert Fahrenheit to Celsius</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        input[type=text]{
+            padding: 5px;
+        }
+    </style>
+</head>
+<!--1. Write a program to convert Fahrenheit temperature to Celsius. Here are the things that needs to be implemented as a part
+    of this question:
+a. Ask the input from the user for Fahrenheit using a text field
+b. As soon as the user types in the Fahrenheit number in the text field, the result should display immediately in the div below
+c. Hence, there should not be any submit button
+d. Hint: Use onkeyup event. Formula is : C = (F - 32) * 5/9
+e. Don't display the decimal values - but you should accept decimal values from the user
+f. If the user enters any invalid values (strings) ) then you should make the input box border red and prompt user to enter 
+correct values
+-->
+<body>
+    <div>
+        <label>Add value in Fahrenheit:</label>
+        <input type="text" id="fahren"  placeholder="Fahrenheit" onkeyup="convertTemp()" required>
+    </div>
+    <br>
+    <div id="celsius"></div>
+
+    <script>
+        convertTemp = function(){
+            let fahren = document.getElementById("fahren").value;
+            let cels = Math.round((fahren - 32) * 5/9);
+            
+            if(isNaN(fahren)){
+                alert("Please enter only number. No character allowed.")
+                return document.getElementById("fahren").style.border = "2px solid red";
+               
+            }
+            
+            document.getElementById("celsius").innerHTML = fahren + " Fahrenheit is equal to : " + cels + " Celsius."; 
+            
+        }
+
+    </script>
+</body>
+</html>
