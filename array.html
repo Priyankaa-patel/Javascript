@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Array Assignment</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   
+</head>
+<body>
+    <!-------1. Write a program to display 10 quotes (one after the other in sequence). 
+        Hint: use Arrays to store the quotes (sayings). Name the function as displayQuotes.
+2. Create a function that accepts a parameter which is of the type Array and alerts the length of
+ the array as well as the elements one after the other starting from the 4th element. Call this 
+ function from displayQuotes function that you created in Question 1.
+3. For the above created array, perform the following operations on an array.
+a. pop()
+b. Now check the length and print it to console
+c. reverse()
+d. Now access the 8th array element and print it to console
+e. shift()
+f. Now check the length and print it to console
+g. sort()
+ 
+----->
+    <P>1. & 2. & 3. display 10 quotes in sequance</P>
+
+    <button onclick="displayQuotes()">Try it</button>
+
+    <p id="quote"></p>
+
+    <script>
+    function displayQuotes(){
+        var allquote = ["1. Love For All, Hatred For None.", "2. Change the world by being yourself.", 
+        "3. Every moment is a fresh beginning.", "4. Never regret anything that made you smile.", 
+        "5. Die with memories, not dreams.", "6. Aspire to inspire before we expire.",
+        "7. Everything you can imagine is real.", "8. Simplicity is the ultimate sophistication.",
+        "9. Whatever you do, do it well.", "10. What we think, we become."  ]
+
+        //document.getElementById("quote").innerHTML = allquote.join("<br>");
+
+        for(i=0; i < allquote.length; i++)
+        {
+            //document.write(allquote[i] + "<br>");
+            document.getElementById("quote").innerHTML +=  allquote[i] + "<br>";
+        }
+
+        showArray(allquote);                // que. no. 2
+
+        allquote.pop();                     // que. no. 3 (pop delete element from last)
+        console.log(allquote.length);
+        allquote.reverse();                 // write reverse array
+        console.log(allquote[7]);
+        allquote.shift();                   // delete element from start
+        console.log(allquote.length);
+        allquote.sort();                    //arrange array in ascending order
+        console.log(allquote);
+    }
+
+    function showArray(arr){                // que. no. 2
+
+        alert("Length: " + arr.length +"\n" + "Array: " + arr.slice(3,10).join("\n"));
+
+    }
+   </script>
+   <hr>
+    <!--------4. Prompt the user for appropriate values based on the operation that you are performing 
+        and then execute the following operations on the array:
+a. push()
+b. Now check the length and print it to console
+c. unshift()
+d. Now check the length and print it to console
+e. splice()
+f. Now check the length and print it to console. Now access the 5th array element and print it to console.
+g. slice()
+ 
+------>
+    <p>4. Prompt user</p>
+
+    <button onclick="onPush()">Push</button>
+    <p id="lists"></p>
+    <button onclick="onUnshift()">Unshift</button>
+    <p id="unshift"></p>
+    <button onclick="onSplice()">Splice</button>
+    <p id="splice"></p>
+    <button onclick="onSlice()">Slice</button>
+    <p id="slice"></p>
+
+    <script>
+        var list = [];
+        function onPush(){             // add one element in array at end
+            var userInput = prompt("Please enter value to push:")
+
+            if(userInput != "" && userInput != null){
+            list.push(userInput);
+            }
+           
+            document.getElementById("lists").innerHTML = "Length: " + list.length + "<br>" + "Array: " + list;
+        
+            
+        }
+
+    
+
+        function onUnshift(){           // add one element in array at start
+
+            var userInput = prompt("Please enter value to shift:")
+            list.unshift(userInput);
+            document.getElementById("unshift").innerHTML = "Length: " + list.length;
+        }
+
+        function onSplice(){          // add and delete element as you define
+
+            list.splice(2,0,"33", "11");
+            document.getElementById("splice").innerHTML = "Length: " + list.length + "<br>" + "5th element of array: " + list[5] + "<br>" + list;
+        }
+
+        function onSlice(){            // slice the array and create new array/ subarry
+
+            var cut = list.slice(2);
+            document.getElementById("slice").innerHTML = cut;
+        }
+       
+
+    </script>
+    <hr>
+    <!-------5. Create a Months Array (jan, feb, mar...etc) and repeat question 3 and 4. Once you 
+        implement these two arrays, use concat() method to add these arrays. Print each of the elements
+         of this concatenated array one after the other - hint: use loops.
+------>
+    <p>5. Months array</p>
+
+    <button onclick="monthPush()">Push</button>
+    <p id="monthpush"></p>
+    <button onclick="monthUnshift()">Unshift</button>
+    <p id="monthunshift"></p>
+    <button onclick="monthSplice()">Splice</button>
+    <p id="monthsplice"></p>
+    <button onclick="monthSlice()">Slice</button>
+    <p id="monthslice"></p>
+    <p id="months"></p>
+    <p id="myarray"></p>
+    <p id="mylist"></p>
+    <script>
+        // que.3 perfomed
+        var month = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+
+        month.pop();
+        console.log(month.length);
+        month.reverse();
+        console.log(month[7]);
+        month.shift();
+        console.log(month.length);
+        month.sort();
+        document.getElementById("months").innerHTML = "1st array: " + month;
+
+
+        //que.4 perfomed
+        var uMonth = [];
+       
+        function monthPush(){             // add one element in array at end
+            var userMonth = prompt("Please enter value to push:")
+
+            if(userMonth != "" && userMonth != null){
+                uMonth.push(userMonth);
+            }
+           
+            document.getElementById("monthpush").innerHTML = "Length: " + uMonth.length + "<br>" + "Array: " + uMonth;
+        
+            
+        }
+
+        function monthUnshift(){           // add one element in array at start
+
+            var userMonth = prompt("Please enter value to shift:")
+            uMonth.unshift(userMonth);
+            document.getElementById("monthunshift").innerHTML = "Length: " + uMonth.length;
+        }
+
+        function monthSplice(){          // add and delete element as you define
+
+            uMonth.splice(2,0,"splice1", "splice2");
+            document.getElementById("monthsplice").innerHTML = "Length: " + uMonth.length + "<br>" + "5th element of array: " + uMonth[5] + "<br>" + uMonth;
+        }
+
+        function monthSlice(){            // slice the array and create new array/ subarry
+
+            cut = uMonth.slice(2);
+            document.getElementById("monthslice").innerHTML = "2ed array: " + cut;
+
+            //concat 2 output arrays
+            var myarray = month.concat(cut);
+            document.getElementById("myarray").innerHTML ="Concatenates Array: " + myarray;
+
+            //print each element of array
+            for(var i=0; i < myarray.length; i++)
+            {
+                //document.write(myarray[i] + "<br>");
+                document.getElementById("mylist").innerHTML +=  myarray[i] + "<br>";
+            }
+        }
+
+    </script>
+
+    <hr>
+    <!-------6. Create an array with Monday, Tuesday,Wednesday,Thursday, Friday and Saturday and console.log individually.
+-------->
+    <p>6. week days (on console)</p>
+
+    <script>
+
+    var weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
+    for (var i=0; i < weekdays.length; i++)
+    {
+        console.log(weekdays[i]);
+    }
+
+    </script>
+    <hr>
+    <!------7. weekdays-7. Ask for a prompt, if I enter ‘Monday’, in console display-
+         Tuesday’,’Wednesday’,’Thursday’,’Friday’and ‘Saturday.
+If I enter ‘Tuesday’,in console display ’Wednesday’,’Thursday’,’Friday’and ‘Saturday’.
+If I enter ‘Wednesday’,in console display ’Thursday’,’Friday’and ‘Saturday’.
+If I enter ‘Thursday’ , in console- ‘Friday’and ‘Saturday’.
+If I enter ‘Friday’, in console- ‘Saturday’.
+If I enter ‘Saturday,in console –‘Sunday’.
+If I enter ‘Sunday’, in console- it is the last day of the week.
+----->
+    <p>7. weekdays</p>
+
+    <button onclick="myDays()">Try it</button>
+    <p id="printdays"></p>
+    <script>
+        function myDays(){
+        var userd = prompt("please enter any day of week:");
+        var userdays = userd.toLowerCase();
+        var startPrinting = false;
+        var str = "";
+
+        for(var i=0; i < weekdays.length; i++){
+
+            if(startPrinting)
+            {
+                str += weekdays[i] + "<br>";
+            }
+            if(userdays == weekdays[i])
+            {
+                if(i == weekdays.length-1)
+                {
+                    str += weekdays[0];
+                }else if (userdays == weekdays[0])
+                    {
+                        str += "It's last day of week";
+                    }else   
+                    startPrinting = true;
+            }
+        }
+        document.getElementById("printdays").innerHTML = str ;
+
+        }
+    </script>
+    <hr>
+
+<!------8. Ask for a prompt, if I enter ‘Monday’, in console display ‘Tuesday’,’Wednesday’,’Thursday’,’Friday’,‘Saturday’ ,
+    ’Sunday’and ‘Monday’.
+When I enter ‘Tuesday’, in console display ’Wednesday’,’Thursday’,’Friday’,‘Saturday’ ,’Sunday’ ‘Monday’ and ‘Tuesday’.
+When I enter ‘Wednesday’, in console display ’Thursday’,’Friday’,‘Saturday’ ,’Sunday’, ‘Monday’,’Tuesday’ and ‘Wednesday’.
+When I enter ‘Thursday’, in console display ’Friday’,‘Saturday’ ,’Sunday’,‘Monday’, ‘Tuesday’ and ‘Wednesday’.
+When I enter ‘Friday’, in console display ‘Saturday’ ,’Sunday’,‘Monday’, ‘Tuesday’ ,‘Wednesday’,’Thursday’ and ‘Friday’.
+When I enter ‘Saturday’, in console display ‘Sunday’,‘Monday’, ‘Tuesday’ ,‘Wednesday’,’Thursday’ and ‘Friday’ and ‘Saturday’.
+When I enter ‘Sunday’, in console display ‘Monday’, ‘Tuesday’ ,‘Wednesday’,’Thursday’, ‘Friday’and ‘Saturday’.
+------>
+<p>8. weekdays</p>
+
+<button onclick="myWeekday()">Try it</button>
+<p id="printmydays"></p>
+<script>
+    function myWeekday(){
+    var userd = prompt("please enter any day of week:");
+    var userdays = userd.toLowerCase();
+    var startPrinting = false;
+    var str = "";
+    
+
+    for(var i=0; i < weekdays.length; i++){
+
+       if(startPrinting)
+       {
+           str += weekdays[i] + "<br>";
+       }
+       if(userdays == weekdays[i] && startPrinting)
+       {
+           break;
+       }
+       
+        if(userdays == weekdays[i])
+        {
+            startPrinting = true;
+        }
+
+        if(i == weekdays.length-1)
+        {
+            i=-1;
+        }
+
+    }
+    document.getElementById("printmydays").innerHTML = str ;
+
+    }
+</script>
+<hr>
+
+
+
+    <!--------9. Create an array, for every match, display an alert ‘match’.
+----->
+    <p>9. for every match</p>
+
+  
+
+    <p id="ages"></p>
+
+    <script>
+        var age = [12,33,45,8,16];
+       var allOver18 = age.every(myAge);
+        
+        function myAge(value){
+
+           if(allOver18 < 45)
+            
+        alert("match");
+        
+        }
+    </script>
+
+<!-----------10. Create two arrays, for every match between the 2 arrays, display an alert ‘there is a match’.
+-------->
+<p>10. Compar two arrays</p>
+
+<script>
+    arr1 = [11,22,33,44,55,66];
+    arr2 = [22,44,66];
+
+    
+
+</script>
+
+</body>
+</html>
