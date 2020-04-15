@@ -1,0 +1,124 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <meta charset='utf-8'>
+     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+     <title>Object</title>
+     <meta name='viewport' content='width=device-width, initial-scale=1'>
+ </head>
+ <body>
+
+<!---------1. Create a new object with direct instance (using new operator), and add some properties
+     to that object. Accessing all properties of that object.
+-->
+<p>1.Create a new object with direct instance (using new operator)</p>
+
+<p id="obj"></p>
+
+<script>
+
+var person = new Object();
+person.firstName = "Priyanka";
+person.lastName = "Patel";
+person.height = "160";
+
+document.getElementById("obj").innerHTML = 
+person.firstName + " " + person.lastName + " is" + person.height + " cm" + " tall.";
+
+</script>
+<hr>
+
+<!-------2. Create a new object with a user-defined function, and add some properties  to 
+    that object access all properties of the object.
+-->
+<p>2. Create a new object with a user-defined function(Constructor)</p>
+
+<p id="construct"></p>
+
+<script>
+    //it's best practice to give constructor name capitalize
+    // Constructor function for Person objects
+    function Person(first, last, age, eye){
+        this.firstName = first;
+        this.lastName  = last;
+        this.age = age;
+        this.eyeColor = eye;
+    }
+
+    // Create a Person object
+    var Father = new Person("John", "Doe", "55", "lightblue");
+
+    document.getElementById("construct").innerHTML = 
+    "My Father " + Father.firstName + " " + Father.lastName + " is " + Father.age + " years old.";
+
+</script>
+<hr>
+
+<!-------3.  Create a new object, and some properties, also add a function along with the object.
+------>
+<p>3.  add a function along with the object</p>
+
+<p id="fullname"></p>
+
+<script>
+
+var person = {
+    firstName: "Johan",
+    lastName: "Cruz",
+    age: "34",
+    fullName: function(){
+        return this.firstName + " " + this.lastName;
+    }
+}
+document.getElementById("fullname").innerHTML = person.fullName();
+
+</script>
+<hr>
+
+
+<!------4. Create a new object,like “empdetails” that will contain methods that compute employee 
+    annual salary,and average salary of employee using two methods. (So create two methods like anunalsalary(),avgsalary()).
+ -->
+<p>4.  compute employee annual salary,and average salary of employee </p>
+
+<p id="salary"></p>
+<p id="avgsalary"></p>
+<script>
+
+    function EmployeeDetails(id, name, pay, weekhour, weekyear){
+        this.employeeId = id;
+        this.employeeName = name;
+        this.employeeHourPay = pay;
+        this.employeeWorkHour = weekhour;
+        this.weekOfYear = weekyear;
+        this.annualSalary = function(){
+            return this.employeeHourPay * this.employeeWorkHour * this.weekOfYear;
+        }
+        this.avgSalary = function(){
+            return Math.round(this.annualSalary()/12);
+        }
+
+    }
+   
+    var employee01 = new EmployeeDetails(01, "Sara", 20, 40, 52);
+
+    document.getElementById("salary").innerHTML = employee01.employeeName +
+    "\'s Annual salary is $" +  employee01.annualSalary();
+    document.getElementById("avgsalary").innerHTML = employee01.employeeName +
+    "\'s Avegrage salary per month is $" +  employee01.avgSalary();
+
+
+/*var employeeDetails = {
+    employeeId: "01",
+    employeeName: "Sara",
+    employeeHourPay: "19",
+    employeeWorkHour: "40",
+    weeksOfYear: "52",
+    annualSalary: function(){
+        return this.employeeHourPay * this.employeeWorkHour * this.weeksOfYear;
+    }
+}*/
+</script>
+
+ </body>
+ </html>
